@@ -9,6 +9,7 @@ type Props = TouchableOpacityProps & {
     title: string;
     icon: React.FC<SvgProps>;
     checked?: boolean;
+    hasCheckBox?: boolean;
 }
 
 export function Category({
@@ -16,9 +17,10 @@ export function Category({
     //converter icon para letra maiúscula para usa-lo como componente, por ser uma regra do react
     icon: Icon,
     checked = false,
+    hasCheckBox = false,
     ...rest
 }: Props) {
-    const {secondary50, secondary70} = theme.colors;
+    const {secondary40, secondary50, secondary70, secondary85} = theme.colors;
 
     return (
         <TouchableOpacity {...rest}>
@@ -26,10 +28,17 @@ export function Category({
                 style={styles.container}
                 //de cor até que dor ele deve ir
                 colors={[secondary50, secondary70]}
-                >
+            >
                     
-                <View style={[styles.content, {opacity: checked ? 1 : 0.4}]}>
-                    <View style={checked ? styles.checked : styles.check} />  
+                <LinearGradient 
+                    style={[styles.content, {opacity: checked ? 1 : 0.5}]}
+                    colors={[checked ? secondary85 : secondary40, secondary50]}
+                >
+                    {
+                        hasCheckBox &&
+                        <View style={checked ? styles.checked : styles.check} />  
+                    }
+                    
                     <Icon 
                         width={48} 
                         height={48}
@@ -37,7 +46,7 @@ export function Category({
                     <Text style={styles.title}>
                         { title }
                     </Text>
-                </View>
+                </LinearGradient>
             </LinearGradient>
         </TouchableOpacity>
     );
