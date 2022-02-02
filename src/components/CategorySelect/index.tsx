@@ -1,11 +1,5 @@
 import React from 'react';
-import { 
-    View, 
-    ScrollView,     
-
-} from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { theme } from '../../global/styles/theme';
+import { ScrollView } from 'react-native';
 import { styles } from './styles';
 import { categories } from '../../utils/categories';
 import { Category } from '../Category';
