@@ -1,4 +1,3 @@
-import { Inter_800ExtraBold } from '@expo-google-fonts/inter';
 import { StyleSheet } from 'react-native';
 import { theme } from '../../global/styles/theme';
 

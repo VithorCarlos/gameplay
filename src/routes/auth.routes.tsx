@@ -3,7 +3,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { theme } from '../global/styles/theme';
 import { Home } from '../screens/Home';
 import { SignIn } from '../screens/SignIn';
-import AppointmentsDetails from '../screens/AppointmentsDetails';
+import { AppointmentsDetails }  from '../screens/AppointmentsDetails';
+import { AppointmentsCreate } from '../screens/AppointmentsCreate';
 
 
 const {Navigator, Screen} = createNativeStackNavigator();
@@ -31,6 +32,11 @@ export function AuthRoutes() {
             <Screen
                 name='AppointmentsDetails'
                 component={AppointmentsDetails}
+            />
+
+            <Screen
+                name='AppointmentsCreate'
+                component={AppointmentsCreate}
             />
         </Navigator>
     );

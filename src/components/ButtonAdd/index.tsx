@@ -14,7 +14,7 @@ export function ButtonAdd({...rest} : TouchableOpacityProps) {
     return (
         <TouchableOpacity 
             style={styles.container}
-            
+            {...rest}
         > 
             <MaterialCommunityIcons
                 name='plus'
