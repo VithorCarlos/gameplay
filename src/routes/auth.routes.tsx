@@ -17,13 +17,7 @@ export function AuthRoutes() {
                 headerShown: false,
                 contentStyle: { backgroundColor: theme.colors.secondary100 }
             }}
-        >
-
-            <Screen
-                name='SignIn'
-                component={SignIn}
-            />
-            
+        > 
             <Screen
                 name='Home'
                 component={Home}

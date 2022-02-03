@@ -25,12 +25,10 @@ export function Home() {
                 icon: null,
                 owner: true
             },
-
             category: '1',
             date: '22/06 ás 20:40',
             description: 'É hoje que vamos chegar ao challanger  sem perder partida uma partida da md10'
         },
-
         {
             id: '2',
             guild: {
@@ -39,11 +37,11 @@ export function Home() {
                 icon: null,
                 owner: true
             },
-
             category: '2',
             date: '22/06 ás 20:40',
             description: 'É hoje que vamos chegar ao challanger  sem perder partida uma partida da md10'
-        }
+        },
+        
     ];
 
     function handleCategorySelect(categoryId: string) {
@@ -73,25 +71,26 @@ export function Home() {
                 setCategory={handleCategorySelect}
             />
 
-            <View style={styles.content}>
-                <ListHeader
-                    title='Partidas Agendadas'
-                    subtitle='Total 6'
-                />
-
-                <FlatList 
-                    data={appointments}
-                    //pg do item a propriedade que quer eleger como ID
-                    keyExtractor={item => item.id}
-                    renderItem={({ item }) => (
-                        <Appointment data={item} onPress={handleAppointmentsDetails}/>
-                    )}
-                    //divisor de listas
-                    ItemSeparatorComponent={() => <ListDevider/>}
-                    style={styles.matches}
-                    showsVerticalScrollIndicator={false}
-                />
-            </View>  
+  
+            <ListHeader
+                title='Partidas Agendadas'
+                subtitle='Total 6'
+            />
+        
+            <FlatList 
+                data={appointments}
+                //pg do item a propriedade que quer eleger como ID
+                keyExtractor={item => item.id}
+                renderItem={({ item }) => (
+                    <Appointment data={item} onPress={handleAppointmentsDetails}/>
+                )}
+                //divisor de listas
+                ItemSeparatorComponent={() => <ListDevider/>}
+                style={styles.matches}
+                showsVerticalScrollIndicator={false}
+                //estibilização interna na lista
+                contentContainerStyle={{ paddingBottom: 50 }}
+            />
         </Background>
     );  
 }

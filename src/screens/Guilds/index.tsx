@@ -25,13 +25,6 @@ export function Guilds({handleGuildSelect}: Props) {
             icon: 'a',
             owner: true
         },
-
-        {
-            id: 3,
-            name: 'Fds',
-            icon: 'a',
-            owner: true
-        }
     ]
 
   return (
@@ -45,9 +38,11 @@ export function Guilds({handleGuildSelect}: Props) {
                     onPress={() => handleGuildSelect(item)}
                 />
             )}
-            ItemSeparatorComponent={ListDevider}
+            ItemSeparatorComponent={() => <ListDevider isCentered/>}
+            ListHeaderComponent={() => <ListDevider isCentered/>}
             showsVerticalScrollIndicator={false}
             style={styles.guilds}
+            contentContainerStyle={{ paddingBottom: 50, paddingTop: 100 }}
         />
     </View>
     );
