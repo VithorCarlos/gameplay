@@ -1,4 +1,3 @@
-import { Inter_100Thin } from '@expo-google-fonts/inter';
 import { StyleSheet } from 'react-native';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 import { theme } from '../../global/styles/theme';
@@ -43,5 +42,26 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 24,
         paddingVertical: 20,
         marginBottom: getBottomSpace()
+    },
+
+    modalContainer: {
+        flex: 1,
+        marginHorizontal: 15,
+        paddingHorizontal: 20,
+        borderRadius: 8
+    },
+
+    modalText: {
+        fontSize: 24,
+        fontFamily: theme.fonts.title500,
+        color: theme.colors.heading,
+        marginBottom: 40,
+        
+    },
+
+    modalContent: {
+        flex: 1,
+        justifyContent: 'space-between',
+        marginVertical: 30
     }
 });

@@ -22,7 +22,6 @@ export function Avatar({urlImage} : Props) {
             <Image 
                 source={{uri : urlImage}}
                 style={styles.avatar}
-            
             />
         </LinearGradient>
     );
