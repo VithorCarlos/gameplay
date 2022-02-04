@@ -9,6 +9,7 @@ import { Routes } from './src/routes';
 import { Background } from './src/components/Background';
 
 LogBox.ignoreLogs(['You are not currently signed in to Expo on your development machine.'])
+
 export default function App() {
   const [fontsLoaded] = useFonts({
     Inter_400Regular, 
@@ -31,7 +32,6 @@ export default function App() {
         //conteudo colar no limite da tela
         translucent
       />
-      {/* valor inicial do contexto */}
       <AuthProvider>
         <Routes />
       </AuthProvider>

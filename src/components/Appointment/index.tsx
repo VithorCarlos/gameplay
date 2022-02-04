@@ -28,7 +28,7 @@ type Props = TouchableOpacityProps & {
 
 export function Appointment({data, ...rest}: Props) {
     //vai retornar uma coleção de um elemento só. pega a primeira posição
-    const [category] = categories.filter(item => item.id === data.category);
+    const [ category ] = categories.filter(item => item.id === data.category);
     const { owner } = data.guild;
     const { primary, on, secondary50, secondary70 } = theme.colors;
 
@@ -39,7 +39,7 @@ export function Appointment({data, ...rest}: Props) {
                     style={styles.guildIconContainer}
                     colors={[ secondary50, secondary70 ]}
                >
-                    <GuildIcon />
+                    <GuildIcon guildId={data.guild.id} iconId={data.guild.icon}/>
                 </LinearGradient>
                 <View style={styles.content}>
                     <View style={styles.header}>
@@ -48,7 +48,7 @@ export function Appointment({data, ...rest}: Props) {
                         </Text>
 
                         <Text style={styles.category}>
-                            {category.title}
+                            { category.title }
                         </Text>
                     </View>
 
@@ -56,7 +56,7 @@ export function Appointment({data, ...rest}: Props) {
                         <View style={styles.dateInfo}>
                             <CalendarSvg />
                             <Text style={styles.date}>
-                                {data.date}
+                                { data.date }
                             </Text>
                         </View>
 

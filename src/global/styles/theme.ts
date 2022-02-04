@@ -13,10 +13,13 @@ export const theme = {
     secondary30: '#495BCC', 
    
     overlay: 'rgba(0,0,0,0.7)',
+    overlayBlack: 'rgba(0,0,0,0.8)',
     highlight: '#ABB1CC',
     heading: '#DDE3F0',
     line: '#991F36',
     on: '#32BD50',
+
+    discord: '#7289da'
   },
 
   fonts: {
