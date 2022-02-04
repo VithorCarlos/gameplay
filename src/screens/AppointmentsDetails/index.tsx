@@ -4,13 +4,13 @@ import {
   ImageBackground, 
   TouchableOpacity, 
   View, 
-  Alert,
   Share,
   Platform,
-  FlatList } from 'react-native';
+  FlatList, 
+  Alert} from 'react-native';
 import { Fontisto } from '@expo/vector-icons'
 import { Background } from '../../components/Background';
-import { useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { Header } from '../../components/Header';
 import { theme } from '../../global/styles/theme';
 import bannerImg from '../../assets/banner.png';
@@ -23,6 +23,9 @@ import { Load } from '../../components/Load';
 import { AppointmentProps } from '../../components/Appointment';
 import { api } from '../../services/api';
 import * as Linking from 'expo-linking';
+import { LinearGradient } from 'expo-linear-gradient';
+import { ModalAlert } from '../../components/ModalAlert';
+import { Button } from '../../components/Button';
 
 type Params = {
   guildSelected: AppointmentProps
@@ -41,6 +44,10 @@ export function AppointmentsDetails(){
   const { guildSelected } = route.params as Params
   const [ widget, setWidget ] = useState<GuildWidget>({} as GuildWidget);
   const [ loading, setLoading ] = useState(true);
+  const [ mordalAlert, setModalAlert] = useState(false);
+  const {secondary80, secondary100} = theme.colors;
+
+  const navigation = useNavigation();
 
   async function fetchGuildWidget() {
     try {
@@ -48,7 +55,7 @@ export function AppointmentsDetails(){
       setWidget(response.data);
       setLoading(false);
     } catch {
-        Alert.alert(`O Widget deve esta habilitado nas configurações do servidor.`);
+        setModalAlert(true);
     } 
   }
 
@@ -65,6 +72,11 @@ export function AppointmentsDetails(){
 
   function handleOpenGuild(){
     Linking.openURL(widget.instant_invite);
+  }
+
+  function handleCloseMordalAlert() {
+      setModalAlert(false);
+      navigation.navigate('Home');
   }
 
   useEffect(()=> {
@@ -132,7 +144,23 @@ export function AppointmentsDetails(){
         </View>
         }
       
-        
+      <ModalAlert
+        visible={mordalAlert}
+      >
+        <LinearGradient
+          style={styles.modalContainer}
+          colors={[secondary80, secondary100]}
+        >
+        <View style={styles.modalContent}>
+          <Text style={styles.modalText}>
+            O Widget deve estar habilitado nas configurações do servidor.
+            Por Favor, verifique com o administrador do servidor.
+          </Text>
+
+          <Button title='Entendi' onPress={handleCloseMordalAlert}/>
+        </View>
+        </LinearGradient>
+      </ModalAlert>
     </Background>
   );
 }
